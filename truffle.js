@@ -29,6 +29,12 @@ module.exports = {
       gas: 4500000,
       gasPrice: 25000000000,
     },
+    ganache: {
+      provider: new HDWalletProvider(mnemonic, 'http://localhost:8545'),
+      network_id: '*',
+      gas: 4500000,
+      gasPrice: 25000000000,
+    },
     // config for solidity-coverage
     coverage: {
       host: 'localhost',
