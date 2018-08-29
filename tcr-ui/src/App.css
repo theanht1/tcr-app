@@ -1,0 +1,89 @@
+/* .app {
+  padding: 0px 50px;
+  height: 600px;
+  background-color: white;
+} */
+
+.header {
+  padding: 30px 30px 20px 50px;
+  /* padding-left: 30px; */
+}
+
+/* div.header {
+  display:
+} */
+
+#registry-name {
+  color: white;
+  font-family: 'Oxygen', sans-serif;
+  font-size: 25px;
+}
+
+.nav {
+  color: white;
+  /* text-transform: uppercase; */
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+a.nav-link {
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold
+}
+
+a:hover.nav-link {
+  border-bottom: 3px solid white;
+}
+
+/* .glyphicon {
+  height:50px;
+  width:50px;
+} */
+
+.content {
+  padding: 0px 50px;
+  margin-top: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.title {
+  font-family: 'Oxygen', sans-serif;
+  padding: 10px 0px;
+}
+
+a.listing {
+  color: black;
+}
+
+.btn {
+  text-transform: uppercase;
+  font-family: 'Raleway', sans-serif;
+}
+
+.btn-link {
+  text-transform: none;
+  font-family: 'Oxygen', sans-serif;
+}
+
+a.button-link {
+  color: white;
+}
+
+.tab {
+  margin-top: 5px;
+  text-transform: initial;
+  font-family: 'Oxygen', sans-serif;
+}
+
+.no-listings {
+  font-style: italic;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+}

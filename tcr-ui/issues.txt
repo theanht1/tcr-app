@@ -1,0 +1,9 @@
+- Should have confirmation page for success actions.
+- Invalid address bug when the web3 account address cannot be retrieved fast enough.
+- Move constants in web3.js to a separate config file.
+- "TypeError: Cannot read property 'data' of undefined"
+To reproduce: challenge a listing, then go back to that listing page, then refresh page.
+- The navbar disappears when scale back horizontally.
+- "TypeError: Cannot read property 'appEndDate' of undefined" on listing page.
+To reproduce: Go to a listing, update status, then refresh.
+- Count down timer for challenge.
