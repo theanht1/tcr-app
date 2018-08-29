@@ -1,4 +1,6 @@
 import Web3 from 'web3';
+import contract from 'truffle-contract';
+import axios from 'axios';
 
 import config from '../config/config.json';
 import registryContract from '../build/contracts/Registry.json';
@@ -15,6 +17,13 @@ if (typeof window.web3 !== 'undefined') {
   web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
 }
 
+const Registry = contract(registryContract);
+Registry.setProvider(web3.currentProvider);
+const Token = contract(tokenContract);
+Token.setProvider(web3.currentProvider);
+
+
+const SERVER_ADDRESS = config.serverAddress;
 const REGISTRY_ADDRESS = config.registryAddress;
 const MIN_DEPOSIT = config.minDeposit;
 const GAS_LIMIT = config.gasLimit;
@@ -55,6 +64,24 @@ const getVotingInstance = (callback) => {
 /*
 Contract functions
 */
+
+//export const getToken = async () => {
+//  const tokenAddress = await registryInstance.token.call();
+//  return web3.eth.contract(votingContract.abi).at(tokenAddress);
+//};
+
+export const sendToken = async (amount, to) => {
+  const token = await Token.deployed();
+  return token.transfer(to, amount, { from: web3.eth.accounts[0] });
+};
+
+export const applyRegistry = async (listing, deposit) => {
+  await sendToken(deposit, REGISTRY_ADDRESS);
+  return axios.post('/apply', {
+    name: listing.listingName,
+    data: listing,
+  });
+};
 
 function approveTokensToRegistry(amount, callback) {
   getAccount((acc) => {

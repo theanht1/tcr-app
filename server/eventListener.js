@@ -1,5 +1,6 @@
 const { Registry } = require('./utils');
 const Application = require('./models/Application');
+const Challenge = require('./models/Challenge');
 
 const setupEventListener = async () => {
   // TODO: change fromBlock to contract deploy block

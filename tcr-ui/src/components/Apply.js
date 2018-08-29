@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { apply } from '../web3/web3';
+import { applyRegistry } from '../web3/web3';
 
 import { FormGroup, Input, Label, Button, Alert, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
@@ -35,21 +35,20 @@ class Apply extends Component {
       metadata: this.state.metadata
     };
     const deposit = parseInt(this.state.deposit, 10) * config.scale;
-    apply(listing, deposit, (error, result) => {
-      if (error) {
-        console.log(error);
-        this.setState({
-          errorVisibility: true,
-          successVisibility: false
-        })
-      } else {
+    applyRegistry(listing, deposit)
+      .then(() => {
         console.log(`Application ${listing.listingName} success.`);
         this.setState({
+          errorVisibility: false,
           successVisibility: true,
-          errorVisibility: false
         });
-      }
-    })
+      }, (err) => {
+        console.log(err);
+        this.setState({
+          successVisibility: false,
+          errorVisibility: true,
+        });
+      });
   }
 
   toggle = () => {
@@ -99,16 +98,16 @@ class Apply extends Component {
             <Input
               type="text"
               id="profilePicture"
-              onChange={this.handleChange}  
+              onChange={this.handleChange}
             />
           </FormGroup>
-          
+
           <FormGroup>
             <Label>Credential: </Label>
             <Input
               type="text"
               id="credential"
-              onChange={this.handleChange}  
+              onChange={this.handleChange}
             />
           </FormGroup>
           <FormGroup>
@@ -116,7 +115,7 @@ class Apply extends Component {
             <Input
               type="text"
               id="deposit"
-              onChange={this.handleChange}  
+              onChange={this.handleChange}
             />
           </FormGroup>
           <FormGroup>
@@ -124,7 +123,7 @@ class Apply extends Component {
             <Input
               type="text"
               id="metadata"
-              onChange={this.handleChange}  
+              onChange={this.handleChange}
             />
           </FormGroup>
 

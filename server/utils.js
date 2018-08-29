@@ -35,11 +35,10 @@ const applyRegistry = async ({ name, data = {} }) => {
   const tokenInstance = await Token.deployed();
 
   const minDeposit = (await paramInstance.get.call('minDeposit')).toNumber();
-  console.log(minDeposit, registryInstance.address);
 
   await tokenInstance.approve(registryInstance.address, minDeposit, { from: account })
     .catch(e => console.log(e));
-  //return 0;
+
   return registryInstance.apply(
     listingHash,
     minDeposit,
