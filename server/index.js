@@ -4,6 +4,7 @@ const Web3 = require('web3');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+const setupEventListener = require('./eventListener');
 const controllers = require('./controllers');
 // const ProductModel = require('./product');
 //
@@ -15,9 +16,15 @@ const controllers = require('./controllers');
 
 // Mongoose setup
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/tcr');
+mongoose.connect('mongodb://localhost:27017/tcr', {
+  useNewUrlParser: true,
+});
+
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+// Event listener
+setupEventListener();
 
 // App define
 const app = express();

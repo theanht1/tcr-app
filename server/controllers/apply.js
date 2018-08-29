@@ -4,9 +4,9 @@ const { web3, applyRegistry } = require('../utils');
 const applyController = express.Router();
 
 applyController.post('/apply', async ({
-  body: { name },
+  body: { name, data },
 }, res) => {
-  res.status(201).json(await applyRegistry({ name }));
+  res.status(201).json(await applyRegistry({ name, data }));
 });
 
 module.exports = applyController;

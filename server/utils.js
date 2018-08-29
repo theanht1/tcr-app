@@ -28,7 +28,7 @@ Token.setProvider(provider);
 const Voting = contract(votingArtifact);
 Voting.setProvider(provider);
 
-const applyRegistry = async ({ name }) => {
+const applyRegistry = async ({ name, data = {} }) => {
   const listingHash = web3.utils.sha3(name);
   const registryInstance = await Registry.deployed();
   const paramInstance = await Parameterizer.deployed();
@@ -40,7 +40,12 @@ const applyRegistry = async ({ name }) => {
   await tokenInstance.approve(registryInstance.address, minDeposit, { from: account })
     .catch(e => console.log(e));
   //return 0;
-  return registryInstance.apply(listingHash, minDeposit, name, { from: account, gas: 6000000 });
+  return registryInstance.apply(
+    listingHash,
+    minDeposit,
+    JSON.stringify({ ...data, listingName: name }),
+    { from: account, gas: 6000000 },
+  );
 };
 
 module.exports = {
