@@ -1,6 +1,6 @@
 {
   "name": "Experts Registry",
-  "registryAddress": "0xff5181e2210ab92a5c9db93729bc47332555b9e9",
+  "registryAddress": "0x7c728214be9a0049e6a86f2137ec61030d0aa964",
   "serverAddress": "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1",
   "minDeposit": 10000000000000000000,
   "gasLimit": 4500000,

@@ -146,8 +146,8 @@ const appWhitelisted = async ({ args: { listingHash } }) => {
   return app.update({ $set: { isWhitelisted: true } });
 };
 
-const appRemoved = async ({ args: { listingHash } }) => {
-  return Application.remove({ listingHash }, { justOne: true });
+const appRemoved = ({ args: { listingHash } }) => {
+  return Application.findOneAndDelete({ listingHash });
 };
 
 module.exports = setupEventListener;
